@@ -2,7 +2,7 @@ trigger:
 - '*'
 
 pool:
-  vmImage: 'ubuntu-20.04'
+  name: 'MyAgentPool'
   demands:
   - npm
 
@@ -16,6 +16,10 @@ steps:
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
     version: '$(dotnetSdkVersion)'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
 
 - task: Npm@1
   displayName: 'Run npm install'
